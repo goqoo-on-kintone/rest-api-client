@@ -1,10 +1,10 @@
-import { injectPlatformDeps } from '@kintone/rest-api-client/esm/platform/'
-import * as nodeDeps from '@kintone/rest-api-client/esm/platform/node'
+import { injectPlatformDeps } from '../esm-origin/platform/'
+import * as nodeDeps from '../esm-origin/platform/node'
 
 injectPlatformDeps(nodeDeps)
 
-export { KintoneRestAPIClient } from '@kintone/rest-api-client/esm/KintoneRestAPIClient'
-export * from '@kintone/rest-api-client/esm/error'
-export * as KintoneRecordField from '@kintone/rest-api-client/esm/KintoneFields/exportTypes/field'
-export * as KintoneFormLayout from '@kintone/rest-api-client/esm/KintoneFields/exportTypes/layout'
-export * as KintoneFormFieldProperty from '@kintone/rest-api-client/esm/KintoneFields/exportTypes/property'
+export { KintoneRestAPIClient } from '../esm-origin/KintoneRestAPIClient'
+export * from '../esm-origin/error'
+export * as KintoneRecordField from '../esm-origin/KintoneFields/exportTypes/field'
+export * as KintoneFormLayout from '../esm-origin/KintoneFields/exportTypes/layout'
+export * as KintoneFormFieldProperty from '../esm-origin/KintoneFields/exportTypes/property'

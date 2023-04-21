@@ -1,6 +1,6 @@
-import { injectPlatformDeps } from '@kintone/rest-api-client/esm/platform/';
-import * as browserDeps from '@kintone/rest-api-client/esm/platform/browser';
+import { injectPlatformDeps } from '../esm-origin/platform/';
+import * as browserDeps from '../esm-origin/platform/browser';
 injectPlatformDeps(browserDeps);
-export { KintoneRestAPIClient } from '@kintone/rest-api-client/esm/KintoneRestAPIClient';
-export * from '@kintone/rest-api-client/esm/error';
+export { KintoneRestAPIClient } from '../esm-origin/KintoneRestAPIClient';
+export * from '../esm-origin/error';
 //# sourceMappingURL=index.browser.js.map
