@@ -36,7 +36,7 @@ export class RecordClient {
     this.didWarnMaximumOffsetValue = false
   }
 
-  public getRecord<T extends Record>(params: { app: AppID; id: RecordID }): Promise<{ record: T }> {
+  public getRecord<T extends Record>(params: { app: AppID; id: RecordID; pluginId?: string }): Promise<{ record: T }> {
     const path = this.buildPathWithGuestSpaceId({
       endpointName: 'record',
     })
@@ -212,6 +212,7 @@ export class RecordClient {
     condition?: string
     orderBy?: string
     withCursor?: boolean
+    pluginId?: string
   }): Promise<T[]> {
     const { condition, orderBy, withCursor = true, ...rest } = params
     if (!orderBy) {

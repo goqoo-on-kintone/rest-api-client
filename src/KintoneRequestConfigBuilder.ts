@@ -118,9 +118,10 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
             ...params,
             url: requestUrl,
             method: 'GET' as const,
-            // TODO: 引数で受け取る
-            appId: 'app-id',
-            pluginId: 'plugin-id',
+            // @ts-expect-error
+            appId: params?.app,
+            // @ts-expect-error
+            pluginId: params?.pluginId,
           }),
         }
       }
