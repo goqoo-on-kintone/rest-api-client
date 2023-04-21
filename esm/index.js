@@ -1,7 +1,7 @@
 import { injectPlatformDeps } from '../esm-origin/platform/';
 import * as nodeDeps from '../esm-origin/platform/node';
 injectPlatformDeps(nodeDeps);
-export { KintoneRestAPIClient } from '../esm-origin/KintoneRestAPIClient';
+export { KintoneRestAPIClient } from './KintoneRestAPIClient';
 export * from '../esm-origin/error';
 import * as KintoneRecordField_1 from '../esm-origin/KintoneFields/exportTypes/field';
 export { KintoneRecordField_1 as KintoneRecordField };
