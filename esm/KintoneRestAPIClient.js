@@ -18,7 +18,6 @@ import { KintoneRequestConfigBuilder } from './KintoneRequestConfigBuilder';
 import { KintoneResponseHandler } from '../esm-origin/KintoneResponseHandler';
 import { platformDeps } from '../esm-origin/platform';
 import { UnsupportedPlatformError } from '../esm-origin/platform/UnsupportedPlatformError';
-import { URL } from 'url';
 var buildDiscriminatedAuth = function (auth) {
     if ('username' in auth) {
         return __assign({ type: 'password' }, auth);
@@ -85,6 +84,7 @@ var validateBaseUrl = function (baseUrl) {
     if (baseUrl === undefined) {
         return;
     }
+    // @ts-expect-error
     var url = new URL(baseUrl);
     if (url.hostname !== 'localhost' && url.protocol !== 'https:') {
         throw new Error('The protocol of baseUrl must be "https".');

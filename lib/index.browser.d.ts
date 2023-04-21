@@ -1,2 +1,2 @@
-export { KintoneRestAPIClient } from '../esm-origin/KintoneRestAPIClient';
+export { KintoneRestAPIClient } from './KintoneRestAPIClient';
 export * from '../esm-origin/error';
