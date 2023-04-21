@@ -115,7 +115,8 @@ export class RecordClient {
       totalCount: string | null
     }>(path, params)
     this.warnMaximumOffsetValueIfNeeded(params.query)
-    return response
+    // @ts-expect-error
+    return JSON.parse(response.result.body)
   }
 
   private warnMaximumOffsetValueIfNeeded(query?: string) {

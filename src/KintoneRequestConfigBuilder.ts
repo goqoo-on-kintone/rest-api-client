@@ -89,6 +89,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     this.requestToken = null
   }
 
+  // @ts-expect-error
   public async build(method: HttpMethod, path: string, params: Data, options?: { responseType: 'arraybuffer' }) {
     const requestConfig: RequestConfig = {
       method,
@@ -115,7 +116,18 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
         }
         return {
           ...requestConfig,
-          url: requestUrl,
+          url: '/k/api/app/plugin/proxy/call.json',
+          method: 'POST',
+          data: await this.buildData({
+            headers: {},
+            body: {},
+            ...params,
+            url: requestUrl,
+            method: 'GET' as const,
+            // TODO: 引数で受け取る
+            appId: 'app-id',
+            pluginId: 'plugin-id',
+          }),
         }
       }
       case 'post': {
@@ -188,6 +200,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
     return params
   }
 
+  // @ts-expect-error
   private buildHeaders(params: { basicAuth?: BasicAuth; userAgent?: string }): KintoneAuthHeader {
     const { basicAuth, userAgent } = params
     const basicAuthHeaders = basicAuth
@@ -199,30 +212,30 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
 
     const commonHeaders = { ...platformDepsHeaders, ...basicAuthHeaders }
 
-    switch (this.auth.type) {
-      case 'password': {
-        return {
-          ...commonHeaders,
-          'X-Cybozu-Authorization': Base64.encode(`${this.auth.username}:${this.auth.password}`),
-        }
-      }
-      case 'apiToken': {
-        const apiToken = this.auth.apiToken
-        if (Array.isArray(apiToken)) {
-          return { ...commonHeaders, 'X-Cybozu-API-Token': apiToken.join(',') }
-        }
-        return { ...commonHeaders, 'X-Cybozu-API-Token': apiToken }
-      }
-      case 'oAuthToken': {
-        return {
-          ...commonHeaders,
-          Authorization: `Bearer ${this.auth.oAuthToken}`,
-        }
-      }
-      default: {
-        return { ...commonHeaders, 'X-Requested-With': 'XMLHttpRequest' }
-      }
-    }
+    // switch (this.auth.type) {
+    //   case 'password': {
+    //     return {
+    //       ...commonHeaders,
+    //       'X-Cybozu-Authorization': Base64.encode(`${this.auth.username}:${this.auth.password}`),
+    //     }
+    //   }
+    //   case 'apiToken': {
+    //     const apiToken = this.auth.apiToken
+    //     if (Array.isArray(apiToken)) {
+    //       return { ...commonHeaders, 'X-Cybozu-API-Token': apiToken.join(',') }
+    //     }
+    //     return { ...commonHeaders, 'X-Cybozu-API-Token': apiToken }
+    //   }
+    //   case 'oAuthToken': {
+    //     return {
+    //       ...commonHeaders,
+    //       Authorization: `Bearer ${this.auth.oAuthToken}`,
+    //     }
+    //   }
+    //   default: {
+    //     return { ...commonHeaders, 'X-Requested-With': 'XMLHttpRequest' }
+    //   }
+    // }
   }
 
   private async getRequestToken(): Promise<string> {

@@ -81,6 +81,7 @@ export class KintoneRestAPIClient {
     })
     const httpClient = new DefaultHttpClient({
       responseHandler,
+      // @ts-expect-error
       requestConfigBuilder,
     })
     const { guestSpaceId } = options
