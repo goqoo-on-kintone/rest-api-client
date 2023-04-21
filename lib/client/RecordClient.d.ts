@@ -1,4 +1,4 @@
-import type { HttpClient } from '../../esm-origin/http/';
+import type { HttpClient } from '../http/';
 import type { BulkRequestClient } from '../../esm-origin/client/BulkRequestClient';
 import type { AppID, RecordID, Revision, Record, UpdateKey, CommentID, Comment, Mention } from '../../esm-origin/client/types';
 type RecordForParameter = {
@@ -15,6 +15,7 @@ export declare class RecordClient {
     getRecord<T extends Record>(params: {
         app: AppID;
         id: RecordID;
+        pluginId?: string;
     }): Promise<{
         record: T;
     }>;
@@ -114,6 +115,7 @@ export declare class RecordClient {
         condition?: string;
         orderBy?: string;
         withCursor?: boolean;
+        pluginId?: string;
     }): Promise<T[]>;
     getAllRecordsWithId<T extends Record>(params: {
         app: AppID;

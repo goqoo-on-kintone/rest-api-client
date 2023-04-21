@@ -140,7 +140,8 @@ var RecordClient = /** @class */ (function () {
                     case 1:
                         response = _a.sent();
                         this.warnMaximumOffsetValueIfNeeded(params.query);
-                        return [2 /*return*/, response];
+                        // @ts-expect-error
+                        return [2 /*return*/, JSON.parse(response.result.body)];
                 }
             });
         });

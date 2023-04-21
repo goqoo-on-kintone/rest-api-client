@@ -4,7 +4,7 @@ import type { EndpointName } from '../esm-origin/client/BulkRequestClient';
 import { AppClient } from '../esm-origin/client/AppClient';
 import { RecordClient } from './client/RecordClient';
 import { FileClient } from '../esm-origin/client/FileClient';
-import type { ProxyConfig } from '../esm-origin/http/HttpClientInterface';
+import type { ProxyConfig } from './http/HttpClientInterface';
 import type { BasicAuth, DiscriminatedAuth } from '../esm-origin/types/auth';
 import type { Agent as HttpsAgent } from 'https';
 type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, 'type'> : never;

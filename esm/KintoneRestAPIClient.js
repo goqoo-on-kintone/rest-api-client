@@ -13,7 +13,7 @@ import { BulkRequestClient } from '../esm-origin/client/BulkRequestClient';
 import { AppClient } from '../esm-origin/client/AppClient';
 import { RecordClient } from './client/RecordClient';
 import { FileClient } from '../esm-origin/client/FileClient';
-import { DefaultHttpClient } from '../esm-origin/http/';
+import { DefaultHttpClient } from './http/';
 import { KintoneRequestConfigBuilder } from './KintoneRequestConfigBuilder';
 import { KintoneResponseHandler } from '../esm-origin/KintoneResponseHandler';
 import { platformDeps } from '../esm-origin/platform';
@@ -52,6 +52,7 @@ var KintoneRestAPIClient = /** @class */ (function () {
         });
         var httpClient = new DefaultHttpClient({
             responseHandler: responseHandler,
+            // @ts-expect-error
             requestConfigBuilder: requestConfigBuilder,
         });
         var guestSpaceId = options.guestSpaceId;

@@ -1139,7 +1139,7 @@
       return "".concat(protocol, "//").concat(host);
     };
     var getVersion = function () {
-      return "0.1.0";
+      return "0.2.0";
     };
 
     var browserDeps = /*#__PURE__*/Object.freeze({
