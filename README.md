@@ -1,1 +1,1 @@
-# rest-api-client
+# @goqoo/rest-api-client
