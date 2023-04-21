@@ -11,7 +11,6 @@ import { KintoneResponseHandler } from '../esm-origin/KintoneResponseHandler'
 import { platformDeps } from '../esm-origin/platform'
 import { UnsupportedPlatformError } from '../esm-origin/platform/UnsupportedPlatformError'
 import type { Agent as HttpsAgent } from 'https'
-import { URL } from 'url'
 
 type OmitTypePropertyFromUnion<T> = T extends unknown ? Omit<T, 'type'> : never
 type Auth = OmitTypePropertyFromUnion<DiscriminatedAuth>
@@ -128,6 +127,7 @@ const validateBaseUrl = (baseUrl: Options['baseUrl']) => {
     return
   }
 
+  // @ts-expect-error
   const url = new URL(baseUrl)
   if (url.hostname !== 'localhost' && url.protocol !== 'https:') {
     throw new Error('The protocol of baseUrl must be "https".')

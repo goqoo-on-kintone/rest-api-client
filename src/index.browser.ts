@@ -3,5 +3,5 @@ import * as browserDeps from '../esm-origin/platform/browser'
 
 injectPlatformDeps(browserDeps)
 
-export { KintoneRestAPIClient } from '../esm-origin/KintoneRestAPIClient'
+export { KintoneRestAPIClient } from './KintoneRestAPIClient'
 export * from '../esm-origin/error'
