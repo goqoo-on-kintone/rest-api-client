@@ -2,13 +2,7 @@ import FormData from 'form-data'
 import qs from 'qs'
 import { Base64 } from 'js-base64'
 
-import type {
-  RequestConfigBuilder,
-  RequestConfig,
-  HttpMethod,
-  Params,
-  ProxyConfig,
-} from '../esm-origin/http/HttpClientInterface'
+import type { RequestConfigBuilder, RequestConfig, HttpMethod, Params, ProxyConfig } from './http/HttpClientInterface'
 import type { BasicAuth, DiscriminatedAuth } from '../esm-origin/types/auth'
 import { platformDeps } from '../esm-origin/platform/'
 import type { Agent as HttpsAgent } from 'https'
@@ -175,7 +169,6 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       proxy.auth = undefined
     }
 
-    // @ts-expect-error
     proxy.protocol = proxy.protocol ?? HTTP_PROXY_PROTOCOL
 
     return proxy

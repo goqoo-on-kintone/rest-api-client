@@ -1,5 +1,5 @@
 import { buildPath } from '../../esm-origin/url'
-import type { HttpClient } from '../../esm-origin/http/'
+import type { HttpClient } from '../http/'
 import type { BulkRequestClient } from '../../esm-origin/client/BulkRequestClient'
 import { KintoneAllRecordsError } from '../../esm-origin/error/KintoneAllRecordsError'
 import type {
