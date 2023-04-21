@@ -1,12 +1,44 @@
 {
   "name": "@goqoo/rest-api-client",
+  "private": true,
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "browser": "lib/index.browser.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "yarn clean",
+    "build": "tsc --build --force",
+    "postbuild": "run-p build:*",
+    "lint": "run-p -l lint:*",
+    "prepublishOnly": "run-p build:umd_*",
+    "test": "jest",
+    "test:ci": "jest --runInBand",
+    "build:umd_dev": "rollup -c --environment BUILD:development",
+    "build:umd_prod": "rollup -c --environment BUILD:production",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "clean": "rimraf lib esm umd",
+    "fix:lint": "yarn lint:eslint --fix",
+    "fix": "run-p fix:*",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "start": "yarn build --watch"
   },
+  "files": [
+    "esm",
+    "lib",
+    "umd",
+    "index.mjs"
+  ],
+  "keywords": [
+    "kintone",
+    "rest",
+    "api-client"
+  ],
   "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
@@ -47,5 +79,16 @@
     "js-base64": "^3.7.5",
     "mime": "^3.0.0",
     "qs": "^6.10.5"
+  },
+  "exports": {
+    ".": {
+      "node": {
+        "import": "./index.mjs",
+        "require": "./lib/index.js",
+        "default": "./lib/index.js"
+      },
+      "browser": "./lib/index.browser.js"
+    },
+    "./package.json": "./package.json"
   }
 }
