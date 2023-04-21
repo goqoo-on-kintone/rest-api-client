@@ -163,6 +163,7 @@ export class KintoneRequestConfigBuilder implements RequestConfigBuilder {
       proxy.auth = undefined
     }
 
+    // @ts-expect-error
     proxy.protocol = proxy.protocol ?? HTTP_PROXY_PROTOCOL
 
     return proxy
